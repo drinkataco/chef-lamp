@@ -1,0 +1,71 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    apt (6.1.4)
+    build-essential (8.0.4)
+      mingw (>= 1.1)
+      seven_zip (>= 0.0.0)
+    compat_resource (12.19.0)
+    inifile_chef_gem (0.1.0)
+      build-essential (>= 0.0.0)
+    mingw (2.0.1)
+      seven_zip (>= 0.0.0)
+    mysql (8.5.1)
+    ohai (5.2.0)
+    packagecloud (0.3.0)
+    php (4.5.0)
+      build-essential (>= 0.0.0)
+      mysql (>= 6.0.0)
+      yum-epel (>= 0.0.0)
+    runit (4.0.3)
+      packagecloud (>= 0.0.0)
+      yum-epel (>= 0.0.0)
+    selinux_policy (2.0.1)
+      compat_resource (>= 12.16.3)
+    seven_zip (2.0.2)
+      windows (>= 1.2.2)
+    windows (3.4.1)
+      ohai (>= 4.0.0)
+    yum (5.1.0)
+    yum-epel (2.1.2)
+      compat_resource (>= 12.16.3)
+    yum-scl (0.2.0)
+      inifile_chef_gem (>= 0.0.0)
+      yum (>= 0.0.0)
+
+GIT
+  remote: git://github.com/djoos-cookbooks/composer.git
+  ref: master
+  sha: 6d1a40f377383e258c901741c415cb327fbec4bd
+  specs:
+    composer (2.6.1)
+      apt (>= 0.0.0)
+      php (>= 0.0.0)
+      windows (>= 0.0.0)
+
+GIT
+  remote: git://github.com/sous-chefs/apache2.git
+  ref: master
+  sha: 1918a007e5f80b34db2b02a319d8fd74fc7ae319
+  specs:
+    apache2 (5.0.1)
+
+GIT
+  remote: git://github.com/sous-chefs/mariadb
+  ref: master
+  sha: 709c65c66f3be017f1d127b13ad439ef7c85d9b0
+  specs:
+    mariadb (1.5.3)
+      apt (>= 0.0.0)
+      build-essential (>= 0.0.0)
+      selinux_policy (~> 2.0)
+      yum (>= 0.0.0)
+      yum-epel (>= 0.0.0)
+      yum-scl (>= 0.0.0)
+
+DEPENDENCIES
+  apache2 (>= 0)
+  composer (>= 0)
+  mariadb (>= 0)
+  runit (>= 0)
+

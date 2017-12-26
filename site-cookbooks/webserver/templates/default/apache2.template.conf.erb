@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+  DocumentRoot <%= node['app']['web_dir'] %>/<%= node['app']['site_name'] %>
+
+  DirectoryIndex app.php
+
+  ErrorLog "<%= node['app']['log_dir'] %>/<%= node['app']['site_name'] %>/error.log"
+  CustomLog "<%= node['app']['log_dir'] %>/<%= node['app']['site_name'] %>/access.log" combined
+
+  <Directory <%= node['app']['web_dir'] %>/<%= node['app']['site_name'] %>>
+    Require all granted
+
+    Options Indexes FollowSymLinks
+    AllowOverride All
+
+    SetEnv SYMFONY_ENV <%= node['app']['mode'] %>
+  </Directory>
+</VirtualHost>

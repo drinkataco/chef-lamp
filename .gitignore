@@ -1,0 +1,12 @@
+cookbooks/
+tmp/librarian/
+TODO
+.chef/
+.vagrant/
+
+# These files have template counterparts to copy over
+data_bags/**/*.json
+nodes/*.json
+VagrantFile
+site-cookbooks/webserver/templates/default/*
+!site-cookbooks/webserver/templates/default/apache2.template.conf.erb
