@@ -3,6 +3,7 @@ tmp/librarian/
 TODO
 .chef/
 .vagrant/
+.DS_Store
 
 # These files have template counterparts to copy over
 data_bags/**/*.json
