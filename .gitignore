@@ -7,7 +7,9 @@ TODO
 
 # These files have template counterparts to copy over
 data_bags/**/*.json
+!data_bags/**/*.template.json
 nodes/*.json
+!nodes/*.template.json
 VagrantFile
 site-cookbooks/webserver/templates/default/*
 !site-cookbooks/webserver/templates/default/apache2.template.conf.erb
