@@ -25,5 +25,4 @@ Vagrant.configure("2") do |config|
      chef.run_list = VAGRANT_JSON.delete('run_list')
      chef.json = VAGRANT_JSON
   end
-
 end

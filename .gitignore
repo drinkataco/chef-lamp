@@ -5,7 +5,9 @@ TODO
 .vagrant/
 .DS_Store
 
-# These files have template counterparts to copy over
+# These files have template counterparts to copy from
+# If you want to extend this repo, and add your own remote
+# remove these so that you can track your custom configuration
 data_bags/**/*.json
 !data_bags/**/*.template.json
 nodes/*.json
