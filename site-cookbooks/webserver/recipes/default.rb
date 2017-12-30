@@ -15,7 +15,7 @@ end
 
 # Web files
 template "#{node['apache']['dir']}/sites-available/#{node['app']['site_name']}.conf" do
-  source "apache2.conf.erb"
+  source "apache2.template.conf.erb" # @TODO make me configurable
   mode "0777"
 end
 
