@@ -2,9 +2,10 @@
   "app": {
     "name": "chef-lamp",
     "site_name": "test-site",
-    "web_dir": "/var/www/",
+    "web_dir": "/var/www",
     "mount_dir": "./mount",
-    "log_dir": "/var/log/",
+    "log_dir": "/var/log",
+    "vhost_filename": "apache2.template.conf.erb",
     "mode": "dev"
   },
   "user": {
@@ -21,7 +22,6 @@
     "recipe[mariadb]",
     "recipe[composer]",
     "recipe[webserver]",
-    "recipe[database]",
-    "recipe[site]"
+    "recipe[database]"
   ]
 }
