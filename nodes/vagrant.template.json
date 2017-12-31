@@ -3,6 +3,7 @@
     "name": "chef-lamp",
     "site_name": "test-site",
     "web_dir": "/var/www/",
+    "mount_dir": "./mount",
     "log_dir": "/var/log/",
     "mode": "dev"
   },

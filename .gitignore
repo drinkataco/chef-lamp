@@ -4,6 +4,8 @@ TODO
 .chef/
 .vagrant/
 .DS_Store
+mount/*
+!mount/.gitkeep
 
 # These files have template counterparts to copy from
 # If you want to extend this repo, and add your own remote
