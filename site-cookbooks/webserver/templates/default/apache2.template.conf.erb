@@ -1,7 +1,7 @@
 <VirtualHost *:80>
   DocumentRoot <%= node['app']['web_dir'] %>/<%= node['app']['site_name'] %>
 
-  DirectoryIndex app.php
+  DirectoryIndex index.php
 
   ErrorLog "<%= node['app']['log_dir'] %>/<%= node['app']['site_name'] %>/error.log"
   CustomLog "<%= node['app']['log_dir'] %>/<%= node['app']['site_name'] %>/access.log" combined

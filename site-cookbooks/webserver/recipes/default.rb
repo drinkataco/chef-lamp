@@ -3,9 +3,6 @@
 #
 # Web directory
 directory "#{node['app']['web_dir']}/#{node['app']['site_name']}" do
-  # owner node['user']['name']
-  # mode "0755"
-  # recursive true
 end
 
 # Log Directory
@@ -37,26 +34,27 @@ end;
 package 'git'
 
 begin
-    sc_data_bag = data_bag_item('git', "remote")
+  sc_data_bag = data_bag_item('git', "remote")
 
-    # TODO: might have to change as default user
-    # TODO: Check not already cloned
+  # TODO: Check not already cloned
 
-    unless sc_data_bag['username'].to_s.strip.empty?
-      execute 'initialise_git' do
-        command "git config --global user.name #{sc_data_bag['username']}"
-      end
+  unless sc_data_bag['username'].to_s.strip.empty?
+    execute 'initialise_git' do
+      command "git config --global user.name #{sc_data_bag['username']}"
     end
+  end
 
-    password = ''
+  password = ''
 
-    unless sc_data_bag['password'].to_s.strip.empty?
-      password = ":#{sc_data_bag['password']}"
-    end
+  unless sc_data_bag['password'].to_s.strip.empty?
+    password = ":#{sc_data_bag['password']}"
+  end
 
-    fetch_cmd = "git clone https://#{sc_data_bag['username']}#{password}#{sc_data_bag['location']} #{node['app']['web_dir']}"
+  fetch_cmd = "git clone https://#{sc_data_bag['username']}#{password}#{sc_data_bag['location']} #{node['app']['web_dir']}"
 rescue Net::HTTPServerException, Chef::Exceptions::InvalidDataBagPath
   puts 'No databag for Git. Nothing cloned.'
-
-  # TODO: add phpinfo() blank ?>
+  puts 'Placing default index file'
+  cookbook_file "#{node['app']['web_dir']}/#{node['app']['site_name']}/index.php" do
+    source "index.php"
+  end
 end
