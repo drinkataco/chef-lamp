@@ -12,8 +12,6 @@ data_bags/**/*.json
 
 # If you want to extend this repo, and add your own remote
 # remove these so that you can track your custom configuration
-data_bags/**/*.json
-!data_bags/**/*.template.json
 nodes/*.json
 !nodes/*.template.json
 VagrantFile
