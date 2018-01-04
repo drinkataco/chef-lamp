@@ -14,6 +14,5 @@ data_bags/**/*.json
 # remove these so that you can track your custom configuration
 nodes/*.json
 !nodes/*.template.json
-VagrantFile
 site-cookbooks/webserver/templates/default/*
 !site-cookbooks/webserver/templates/default/apache2.template.conf.erb
