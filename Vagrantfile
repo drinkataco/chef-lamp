@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "192.168.33.10"
 
   # NFS File sharing
-  config.vm.synced_folder VAGRANT_JSON.app.mount_dir, VAGRANT_JSON.app.web_dir, type: "nfs"
+  config.vm.synced_folder VAGRANT_JSON['app']['mount_dir'], VAGRANT_JSON['app']['web_dir'], type: "nfs"
 
   config.vm.provision :chef_solo do |chef|
      chef.cookbooks_path = ["site-cookbooks", "cookbooks"]
