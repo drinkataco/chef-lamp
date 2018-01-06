@@ -1,3 +1,6 @@
+package 'unzip'
+package 'git'
+
 #
 # Create default directories
 #
@@ -31,8 +34,6 @@ end;
 #
 # Set up default site
 #
-package 'git'
-
 begin
   sc_data_bag = data_bag_item('git', "remote")
 

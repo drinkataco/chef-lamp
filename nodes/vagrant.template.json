@@ -11,13 +11,10 @@
   "user": {
     "name": "vagrant"
   },
-  "apache2": {
-    "version": "2.4",
-    "install_method": "source"
+  "apache": {
+    "mpm": "prefork"
   },
   "run_list": [
-    "recipe[standard_packages]",
-    "recipe[apache2]",
     "recipe[apache2::mod_php]",
     "recipe[mariadb]",
     "recipe[composer]",
