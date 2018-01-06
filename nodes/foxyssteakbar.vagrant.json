@@ -3,7 +3,7 @@
     "name": "foxyssteakbar",
     "site_name": "foxyssteakbar-site",
     "web_dir": "/var/www",
-    "mount_dir": "./mount",
+    "mount_dir": "../mount",
     "log_dir": "/var/log",
     "vhost_filename": "foxyssteakbar.apache2.conf.erb",
     "mode": "dev"
@@ -15,11 +15,11 @@
     "mpm": "prefork"
   },
   "run_list": [
-    "recipe[apache2]",
     "recipe[apache2::mod_php]",
     "recipe[mariadb]",
     "recipe[composer]",
     "recipe[webserver]",
-    "recipe[database]"
+    "recipe[database]",
+    "recipe[foxyssteakbar]"
   ]
 }
