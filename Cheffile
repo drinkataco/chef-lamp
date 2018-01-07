@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 #^syntax detection
 
+site 'http://community.opscode.com/api/v1'
+
 cookbook 'runit'
 
 cookbook 'php', :git => 'git://github.com/chef-cookbooks/php.git'
