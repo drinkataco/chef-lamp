@@ -16,11 +16,28 @@ directory "#{node['app']['log_dir']}/#{node['app']['site_name']}" do
 end
 
 #
+# Grab database details if they exit. This is to pass to the vhost where they can
+# be set as apache variables
+#
+db_user = ''
+db_password = ''
+begin
+  mariadb_data_bag = data_bag_item('database', 'mariadb')
+  db_user = mariadb_data_bag['username']
+  db_password = mariadb_data_bag['password']
+rescue Net::HTTPServerException, Chef::Exceptions::InvalidDataBagPath
+end
+
+#
 # Enable virtual host
 #
 template "#{node['apache']['dir']}/sites-available/#{node['app']['site_name']}.conf" do
   source node['app']['vhost_filename']
   mode "0777"
+  variables ({
+    :db_user => db_user,
+    :db_password => db_password
+  })
 end
 
 # Enable vhost
@@ -55,6 +72,7 @@ begin
 rescue Net::HTTPServerException, Chef::Exceptions::InvalidDataBagPath
   puts 'No databag for Git. Nothing cloned.'
   puts 'Placing default index file'
+
   cookbook_file "#{node['app']['web_dir']}/#{node['app']['site_name']}/index.php" do
     source "index.php"
   end
