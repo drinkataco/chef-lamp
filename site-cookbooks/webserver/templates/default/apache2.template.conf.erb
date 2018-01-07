@@ -11,5 +11,13 @@
 
     Options Indexes FollowSymLinks
     AllowOverride All
+
+    <% unless @db_user.to_s.strip.empty? %>
+    SetEnv DATABASE__USER <%= @db_user %>
+    <% end %>
+
+    <% unless @db_password.to_s.strip.empty? %>
+    SetEnv DATABASE__PASSWORD <%= @db_password %>
+    <% end %>
   </Directory>
 </VirtualHost>
