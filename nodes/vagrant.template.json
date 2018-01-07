@@ -15,8 +15,9 @@
     "mpm": "prefork"
   },
   "run_list": [
-    "recipe[apache2::mod_php]",
+    "recipe[php::module_mysql]",
     "recipe[mariadb]",
+    "recipe[apache2::mod_php]",
     "recipe[composer]",
     "recipe[webserver]",
     "recipe[database]"

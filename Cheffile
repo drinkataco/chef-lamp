@@ -4,6 +4,7 @@
 site 'http://community.opscode.com/api/v1'
 
 cookbook 'runit'
+cookbook 'php', :git => 'git://github.com/chef-cookbooks/php.git'
 cookbook 'apache2', :git => 'git://github.com/sous-chefs/apache2.git'
 cookbook 'composer', :git => 'git://github.com/djoos-cookbooks/composer.git'
 cookbook 'mariadb', :git => 'git://github.com/sous-chefs/mariadb'

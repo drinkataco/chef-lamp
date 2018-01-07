@@ -13,10 +13,6 @@ SITE
     mysql (8.5.1)
     ohai (5.2.0)
     packagecloud (0.3.0)
-    php (4.5.0)
-      build-essential (>= 0.0.0)
-      mysql (>= 6.0.0)
-      yum-epel (>= 0.0.0)
     runit (4.0.4)
       packagecloud (>= 0.0.0)
       yum-epel (>= 0.0.0)
@@ -32,6 +28,16 @@ SITE
     yum-scl (0.2.0)
       inifile_chef_gem (>= 0.0.0)
       yum (>= 0.0.0)
+
+GIT
+  remote: git://github.com/chef-cookbooks/php.git
+  ref: master
+  sha: 8b3c3230919bab8316e7e554f651f88b1d8a8ae2
+  specs:
+    php (4.5.0)
+      build-essential (>= 0.0.0)
+      mysql (>= 6.0.0)
+      yum-epel (>= 0.0.0)
 
 GIT
   remote: git://github.com/djoos-cookbooks/composer.git
@@ -67,5 +73,6 @@ DEPENDENCIES
   apache2 (>= 0)
   composer (>= 0)
   mariadb (>= 0)
+  php (>= 0)
   runit (>= 0)
 
