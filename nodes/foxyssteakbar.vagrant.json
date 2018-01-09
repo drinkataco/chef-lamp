@@ -12,11 +12,13 @@
     "name": "vagrant"
   },
   "apache": {
-    "mpm": "prefork"
+    "mpm": "prefork",
+    "user": "vagrant",
+    "group": "vagrant"
   },
   "run_list": [
-    "recipe[php::module_mysql]",
     "recipe[mariadb]",
+    "recipe[php::module_mysql]",
     "recipe[apache2::mod_php]",
     "recipe[composer]",
     "recipe[webserver]",
