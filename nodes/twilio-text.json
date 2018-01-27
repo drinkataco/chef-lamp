@@ -1,7 +1,7 @@
 {
   "app": {
     "name": "chef-lamp",
-    "site_name": "test-site",
+    "site_name": "twilio-text",
     "web_dir": "/var/www",
     "mount_dir": "./mount",
     "log_dir": "/var/log",
