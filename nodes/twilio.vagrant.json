@@ -18,6 +18,7 @@
     "recipe[mariadb]",
     "recipe[apache2]",
     "recipe[composer]",
+    "recipe[nodejs::npm]",
     "recipe[webserver]",
     "recipe[database]",
     "recipe[project]"

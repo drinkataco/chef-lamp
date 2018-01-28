@@ -2,6 +2,10 @@ SITE
   remote: http://community.opscode.com/api/v1
   specs:
     apt (6.1.4)
+    ark (3.1.0)
+      build-essential (>= 0.0.0)
+      seven_zip (>= 0.0.0)
+      windows (>= 0.0.0)
     build-essential (8.0.4)
       mingw (>= 1.1)
       seven_zip (>= 0.0.0)
@@ -50,6 +54,15 @@ GIT
       windows (>= 0.0.0)
 
 GIT
+  remote: git://github.com/redguide/nodejs.git
+  ref: master
+  sha: e4cdbf4246cf62fed8123b71715090b3f86d4255
+  specs:
+    nodejs (5.0.0)
+      ark (>= 2.0.2)
+      build-essential (>= 0.0.0)
+
+GIT
   remote: git://github.com/sous-chefs/apache2.git
   ref: master
   sha: 1918a007e5f80b34db2b02a319d8fd74fc7ae319
@@ -57,7 +70,7 @@ GIT
     apache2 (5.0.1)
 
 GIT
-  remote: git://github.com/sous-chefs/mariadb
+  remote: git://github.com/sous-chefs/mariadb.git
   ref: master
   sha: 709c65c66f3be017f1d127b13ad439ef7c85d9b0
   specs:
@@ -73,6 +86,7 @@ DEPENDENCIES
   apache2 (>= 0)
   composer (>= 0)
   mariadb (>= 0)
+  nodejs (>= 0)
   php (>= 0)
   runit (>= 0)
 

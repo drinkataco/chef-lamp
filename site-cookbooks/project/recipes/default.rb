@@ -23,6 +23,17 @@ execute 'restart_apache' do
   command "sudo service apache2 restart;"
 end
 
+# Install node and yarn
+execute 'node_install' do
+  command "curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -;" \
+    "sudo apt-get install -y nodejs"
+end
+
+execute 'yarn_install' do
+  command "curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -;" \
+    "echo \"deb https://dl.yarnpkg.com/debian/ stable main\" | sudo tee /etc/apt/sources.list.d/yarn.list;" \
+    "sudo apt-get update && sudo apt-get install yarn"
+end
 
 
 
