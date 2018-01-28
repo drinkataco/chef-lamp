@@ -3,9 +3,9 @@
     "name": "chef-lamp",
     "site_name": "twilio-text",
     "web_dir": "/var/www",
-    "mount_dir": "./mount",
+    "mount_dir": "mount",
     "log_dir": "/var/log",
-    "vhost_filename": "apache2.template.conf.erb",
+    "vhost_filename": "twilio.conf.erb",
     "mode": "dev"
   },
   "user": {
@@ -15,11 +15,11 @@
     "mpm": "prefork"
   },
   "run_list": [
-    "recipe[php::module_mysql]",
     "recipe[mariadb]",
-    "recipe[apache2::mod_php]",
+    "recipe[apache2]",
     "recipe[composer]",
     "recipe[webserver]",
-    "recipe[database]"
+    "recipe[database]",
+    "recipe[project]"
   ]
 }

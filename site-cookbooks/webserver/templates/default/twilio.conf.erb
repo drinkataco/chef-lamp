@@ -1,0 +1,23 @@
+<VirtualHost *:80>
+  DocumentRoot <%= node['app']['web_dir'] %>/<%= node['app']['site_name'] %>/public
+
+  ServerName <%= node['app']['site_name'] %>.dev
+  ServerAlias www.<%= node['app']['site_name'] %>.dev
+
+  DirectoryIndex index.php
+
+  ErrorLog "<%= node['app']['log_dir'] %>/<%= node['app']['site_name'] %>/error.log"
+  CustomLog "<%= node['app']['log_dir'] %>/<%= node['app']['site_name'] %>/access.log" combined
+
+  <Directory <%= node['app']['web_dir'] %>/<%= node['app']['site_name'] %>/public>
+    Require all granted
+
+    Options Indexes FollowSymLinks
+    AllowOverride All
+
+    SetEnv SYMFONY_ENV <%= node['app']['mode'] %>
+    <% unless @db_user.to_s.strip.empty? %>SetEnv SYMFONY__DATABASE__USER <%= @db_user %><% end %>
+    <% unless @db_password.to_s.strip.empty? %>SetEnv SYMFONY__DATABASE__PASSWORD <%= @db_password %><% end %>
+  </Directory>
+
+</VirtualHost>
