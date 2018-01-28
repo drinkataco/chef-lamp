@@ -14,6 +14,8 @@ end
 package 'php7.1'
 package 'php7.1-mbstring'
 package 'php7.1-mcrypt'
+package 'php7.1-xml'
+package 'php7.1-curl'
 package 'libapache2-mod-php7.1'
 
 # Reload Apache
