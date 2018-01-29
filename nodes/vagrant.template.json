@@ -11,13 +11,14 @@
   "user": {
     "name": "vagrant"
   },
-  "apache": {
-    "mpm": "prefork"
+  "php-fpm": {
+    "listen": "127.0.0.1:9000"
   },
   "run_list": [
     "recipe[php::module_mysql]",
+    "recipe[php-fpm]",
     "recipe[mariadb]",
-    "recipe[apache2::mod_php]",
+    "recipe[apache2]",
     "recipe[composer]",
     "recipe[webserver]",
     "recipe[database]"

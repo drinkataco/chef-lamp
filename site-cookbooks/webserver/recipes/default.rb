@@ -1,5 +1,6 @@
 package 'unzip'
 package 'git'
+package 'libapache2-mod-fastcgi'
 
 #
 # Create default directories
@@ -40,12 +41,14 @@ template "#{node['apache']['dir']}/sites-available/#{node['app']['site_name']}.c
   })
 end
 
-# Enable vhost
+# Enable vhost and fpm mod
 node.default['apache']['default_site_enabled'] = false
 apache_site "#{node['app']['name']}.conf", true
 
 execute 'site_enable' do
-  command "a2ensite #{node['app']['site_name']}"
+  command "a2ensite #{node['app']['site_name']};" \
+    "a2enmod proxy_fcgi;" \
+    "service apache2 restart"
 end;
 
 #
