@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "bento/ubuntu-16.04"
-  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "private_network", ip: "192.168.3.77"
 
   # NFS File sharing
   config.vm.synced_folder VAGRANT_JSON['app']['mount_dir'], VAGRANT_JSON['app']['web_dir'], type: "nfs"

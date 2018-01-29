@@ -20,4 +20,10 @@
     SetEnv DATABASE__PASSWORD <%= @db_password %>
     <% end %>
   </Directory>
+
+  <FilesMatch \.php$>
+      SetHandler proxy:fcgi://127.0.0.1:9000
+      # for Unix sockets, Apache 2.4.10 or higher
+      # SetHandler proxy:unix:/path/to/fpm.sock|fcgi://dummy
+  </FilesMatch>
 </VirtualHost>

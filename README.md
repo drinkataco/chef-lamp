@@ -8,8 +8,7 @@ Once you have cloned the repository, be sure to run `librarian-chef install` to 
 
 ## Setup
 In order to work with Vagrant, a valid [VagrantFile](https://www.vagrantup.com/docs/vagrantfile/) must be created alongside the root of this repository, and a corresponding node such as the example in `nodes/vagrant.template.json`.
-If you want to get quickly started, you can copy the contents for this file from the file named `VagrantFile.template`, and use the example node template.
-You can then, run `vagrant up` to initialise your virtual machine. This will install all the default packages.
+If you want to get quickly started, you can just clone this repository and run `vagrant up`.
 
 ### Creating a Node
 Copy the template in `nodes` and make sure it is referenced in your VagrantFile. You can adjust app attributes, and adjust the runlist to add your own cookbooks, etc.
