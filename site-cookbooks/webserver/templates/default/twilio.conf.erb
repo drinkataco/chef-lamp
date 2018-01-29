@@ -18,6 +18,13 @@
     SetEnv SYMFONY_ENV <%= node['app']['mode'] %>
     <% unless @db_user.to_s.strip.empty? %>SetEnv SYMFONY__DATABASE__USER <%= @db_user %><% end %>
     <% unless @db_password.to_s.strip.empty? %>SetEnv SYMFONY__DATABASE__PASSWORD <%= @db_password %><% end %>
+
+    <IfModule mod_rewrite.c>
+      Options -MultiViews
+      RewriteEngine On
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteRule ^(.*)$ index.php [QSA,L]
+    </IfModule>
   </Directory>
 
 </VirtualHost>
