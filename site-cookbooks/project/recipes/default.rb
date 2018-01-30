@@ -41,7 +41,7 @@ end
 #
 mariadb_data_bag = data_bag_item('database', 'mariadb')
 template "#{node['app']['web_dir']}/#{node['app']['site_name']}/.env" do
-  source 'env'
+  source 'env.erb'
   mode "0777"
   variables ({
     :db_user => mariadb_data_bag['username'],
