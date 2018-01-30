@@ -36,43 +36,25 @@ execute 'yarn_install' do
     "sudo apt-get update && sudo apt-get install yarn"
 end
 
+#
+# Set up symfony environment variables
+#
+mariadb_data_bag = data_bag_item('database', 'mariadb')
+template "#{node['app']['web_dir']}/#{node['app']['site_name']}/.env" do
+  source 'env'
+  mode "0777"
+  variables ({
+    :db_user => mariadb_data_bag['username'],
+    :db_password => mariadb_data_bag['password'],
+    :secret_key => 'test123',
+  })
+end
 
-
-# php7.1-xml
-# php7.1-xsl
-# php7.1-mbstring
-# php7.1-readline
-# php7.1-zip
-# php7.1-mysql
-# php7.1-phpdbg
-# php7.1-interbase
-# php7.1-sybase
-# php7.1
-# php7.1-sqlite3
-# php7.1-tidy
-# php7.1-opcache
-# php7.1-pspell
-# php7.1-json
-# php7.1-xmlrpc
-# php7.1-curl
-# php7.1-ldap
-# php7.1-bz2
-# php7.1-cgi
-# php7.1-imap
-# php7.1-cli
-# php7.1-dba
-# php7.1-dev
-# php7.1-intl
-# php7.1-fpm
-# php7.1-recode
-# php7.1-odbc
-# php7.1-gmp
-# php7.1-common
-# php7.1-pgsql
-# php7.1-bcmath
-# php7.1-snmp
-# php7.1-soap
-# php7.1-mcrypt
-# php7.1-gd
-# php7.1-enchant
-# libapache2-mod-php7.1
+#
+# Set up symfony environments
+#
+execute 'node_install' do
+  command "cd #{node['app']['web_dir']}/#{node['app']['site_name']};" \
+  "yarn install --ignore-scripts; yarn build-#{ node['app']['mode'] };" \
+  "composer install;"
+end
