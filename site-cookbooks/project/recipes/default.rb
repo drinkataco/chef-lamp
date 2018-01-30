@@ -46,6 +46,7 @@ template "#{node['app']['web_dir']}/#{node['app']['site_name']}/.env" do
   variables ({
     :db_user => mariadb_data_bag['username'],
     :db_password => mariadb_data_bag['password'],
+    :db_database => mariadb_data_bag['database'],
     :secret_key => 'test123',
   })
 end
