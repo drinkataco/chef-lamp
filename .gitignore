@@ -6,7 +6,3 @@ TODO
 .DS_Store
 mount/*
 !mount/.gitkeep
-
-# These files have template counterparts to copy from
-data_bags/**/*.json
-!data_bags/**/*.template.json
