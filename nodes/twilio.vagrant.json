@@ -14,9 +14,21 @@
   "apache": {
     "mpm": "prefork"
   },
+  "redisio": {
+    "servers": [
+      {
+        "name": "master",
+        "port": "6379",
+        "unixsocket": "/tmp/redis.sock",
+        "unixsocketperm": "755"
+      }
+    ]
+  },
   "run_list": [
     "recipe[mariadb]",
     "recipe[apache2]",
+    "recipe[redisio]",
+    "recipe[redisio::enable]",
     "recipe[composer]",
     "recipe[webserver]",
     "recipe[database]",

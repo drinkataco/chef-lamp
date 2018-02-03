@@ -2,10 +2,6 @@ SITE
   remote: http://community.opscode.com/api/v1
   specs:
     apt (6.1.4)
-    ark (3.1.0)
-      build-essential (>= 0.0.0)
-      seven_zip (>= 0.0.0)
-      windows (>= 0.0.0)
     build-essential (8.0.4)
       mingw (>= 1.1)
       seven_zip (>= 0.0.0)
@@ -24,6 +20,7 @@ SITE
       compat_resource (>= 12.16.3)
     seven_zip (2.0.2)
       windows (>= 1.2.2)
+    ulimit (0.4.0)
     windows (3.4.3)
       ohai (>= 4.0.0)
     yum (5.1.0)
@@ -32,6 +29,16 @@ SITE
     yum-scl (0.2.0)
       inifile_chef_gem (>= 0.0.0)
       yum (>= 0.0.0)
+
+GIT
+  remote: git://github.com/brianbianco/redisio.git
+  ref: master
+  sha: 5ccfdff183ae00ce9b71498ac3c1ae948fbc4057
+  specs:
+    redisio (2.6.1)
+      build-essential (>= 0.0.0)
+      selinux_policy (>= 0.0.0)
+      ulimit (>= 0.1.2)
 
 GIT
   remote: git://github.com/chef-cookbooks/php.git
@@ -52,15 +59,6 @@ GIT
       apt (>= 0.0.0)
       php (>= 0.0.0)
       windows (>= 0.0.0)
-
-GIT
-  remote: git://github.com/redguide/nodejs.git
-  ref: master
-  sha: e4cdbf4246cf62fed8123b71715090b3f86d4255
-  specs:
-    nodejs (5.0.0)
-      ark (>= 2.0.2)
-      build-essential (>= 0.0.0)
 
 GIT
   remote: git://github.com/sous-chefs/apache2.git
@@ -86,7 +84,7 @@ DEPENDENCIES
   apache2 (>= 0)
   composer (>= 0)
   mariadb (>= 0)
-  nodejs (>= 0)
   php (>= 0)
+  redisio (>= 0)
   runit (>= 0)
 
