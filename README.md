@@ -1,6 +1,6 @@
 Chef LAMP Recipes for Twilio-Text
 ===================
-Automatically download and configure [twilio-text](https://github.com/drinkataco/twilio-text) for your local virtual machine.
+This will automatically download and configure [twilio-text](https://github.com/drinkataco/twilio-text) for your local virtual machine.
 
 ## Installation
 Follow the installation instructions for [Chef](https://downloads.chef.io/) and [Vagrant](https://www.vagrantup.com/downloads.html) before following the setup instructions to tailor your server.
