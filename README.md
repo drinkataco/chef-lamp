@@ -8,10 +8,12 @@ Once you have cloned the repository, be sure to run `librarian-chef install` to 
 
 ## Credentials
 For this branch, the database is automatically configured with test credentials.
-All you need to do, before build, is add one credential file - api.json location in data_bags/api.json.
+All you need to do, before build, is add one credential file - `api.json`location in `data_bags/twilio/`.
 You need to add this object, with your specific credentials:
-```{
+```
+{
     "sid": "",
     "token": "",
     "from_number": ""
-}```
+}
+```
