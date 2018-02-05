@@ -17,6 +17,8 @@ package 'php7.1-mcrypt'
 package 'php7.1-xml'
 package 'php7.1-curl'
 package 'php7.1-mysql'
+package 'php7.1-bcmath'
+package 'php7.1-amqp'
 package 'libapache2-mod-php7.1'
 
 # Reload Apache
@@ -40,6 +42,7 @@ end
 # Set up symfony environment variables
 #
 mariadb_data_bag = data_bag_item('database', 'mariadb')
+twilio_databag = data_bag_item('twilio', 'api')
 template "#{node['app']['web_dir']}/#{node['app']['site_name']}/.env" do
   source 'env.erb'
   mode "0777"
@@ -48,6 +51,9 @@ template "#{node['app']['web_dir']}/#{node['app']['site_name']}/.env" do
     :db_password => mariadb_data_bag['password'],
     :db_database => mariadb_data_bag['database'],
     :secret_key => 'test123',
+    :twilio_sid => twilio_databag['sid'],
+    :twilio_token => twilio_databag['token'],
+    :twilio_from_number => twilio_databag['from_number']
   })
 end
 

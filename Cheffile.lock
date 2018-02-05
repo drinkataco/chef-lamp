@@ -6,8 +6,15 @@ SITE
       mingw (>= 1.1)
       seven_zip (>= 0.0.0)
     compat_resource (12.19.0)
+    dpkg_autostart (0.2.0)
+    erlang (5.1.0)
+      build-essential (>= 0.0.0)
+      compat_resource (>= 0.0.0)
+      yum-epel (>= 0.0.0)
+      yum-erlang_solutions (>= 1.0.3)
     inifile_chef_gem (0.1.0)
       build-essential (>= 0.0.0)
+    logrotate (2.2.0)
     mingw (2.0.1)
       seven_zip (>= 0.0.0)
     mysql (8.5.1)
@@ -26,6 +33,9 @@ SITE
     yum (5.1.0)
     yum-epel (2.1.2)
       compat_resource (>= 12.16.3)
+    yum-erlang_solutions (1.0.3)
+      compat_resource (>= 12.16.3)
+      yum-epel (>= 0.0.0)
     yum-scl (0.2.0)
       inifile_chef_gem (>= 0.0.0)
       yum (>= 0.0.0)
@@ -61,6 +71,18 @@ GIT
       windows (>= 0.0.0)
 
 GIT
+  remote: git://github.com/rabbitmq/chef-cookbook.git
+  ref: master
+  sha: 7009e24f8343b86a9bdaa275e94cdbf8c1290db7
+  specs:
+    rabbitmq (5.4.0)
+      dpkg_autostart (>= 0.0.0)
+      erlang (>= 0.0.0)
+      logrotate (>= 0.0.0)
+      yum-epel (>= 0.0.0)
+      yum-erlang_solutions (>= 0.0.0)
+
+GIT
   remote: git://github.com/sous-chefs/apache2.git
   ref: master
   sha: 1918a007e5f80b34db2b02a319d8fd74fc7ae319
@@ -85,6 +107,7 @@ DEPENDENCIES
   composer (>= 0)
   mariadb (>= 0)
   php (>= 0)
+  rabbitmq (>= 0)
   redisio (>= 0)
   runit (>= 0)
 

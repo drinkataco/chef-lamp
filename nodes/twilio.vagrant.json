@@ -29,6 +29,7 @@
     "recipe[apache2]",
     "recipe[redisio]",
     "recipe[redisio::enable]",
+    "recipe[rabbitmq]",
     "recipe[composer]",
     "recipe[webserver]",
     "recipe[database]",

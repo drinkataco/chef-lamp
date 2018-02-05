@@ -54,8 +54,6 @@ end;
 begin
   sc_data_bag = data_bag_item('git', "remote")
 
-  # TODO: Check not already cloned
-
   unless sc_data_bag['username'].to_s.strip.empty?
     execute 'initialise_git' do
       command "git config --global user.name #{sc_data_bag['username']}"
