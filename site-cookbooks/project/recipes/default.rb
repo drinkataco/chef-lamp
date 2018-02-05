@@ -65,3 +65,11 @@ execute 'node_install' do
   "yarn install --ignore-scripts; yarn build-#{ node['app']['mode'] };" \
   "composer install;"
 end
+
+#
+# Set up database
+#
+execute 'doctrine_build' do
+  command "cd #{node['app']['web_dir']}/#{node['app']['site_name']};" \
+  "php bin/console doctrine:migrations:migrate;"
+end
