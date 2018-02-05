@@ -41,8 +41,14 @@ end
 #
 # Set up symfony environment variables
 #
+# Attempt to get the twilio databag
+twilio_databag = []
+begin
+  twilio_databag = data_bag_item('twilio', 'api')
+rescue Net::HTTPServerException, Chef::Exceptions::InvalidDataBagPath
+end
+
 mariadb_data_bag = data_bag_item('database', 'mariadb')
-twilio_databag = data_bag_item('twilio', 'api')
 template "#{node['app']['web_dir']}/#{node['app']['site_name']}/.env" do
   source 'env.erb'
   mode "0777"
@@ -51,9 +57,7 @@ template "#{node['app']['web_dir']}/#{node['app']['site_name']}/.env" do
     :db_password => mariadb_data_bag['password'],
     :db_database => mariadb_data_bag['database'],
     :secret_key => 'test123',
-    :twilio_sid => twilio_databag['sid'],
-    :twilio_token => twilio_databag['token'],
-    :twilio_from_number => twilio_databag['from_number']
+    :twilio => twilio_databag
   })
 end
 
