@@ -64,10 +64,15 @@ end
 #
 # Set up symfony environments
 #
-execute 'node_install' do
+execute 'node_yarn_install' do
   command "cd #{node['app']['web_dir']}/#{node['app']['site_name']};" \
-  "yarn install --ignore-scripts; yarn build-#{ node['app']['mode'] };" \
-  "composer install;"
+  "yarn install && yarn build-#{ node['app']['mode'] }"
+end
+
+execute 'composer_install' do
+  command "cd #{node['app']['web_dir']}/#{node['app']['site_name']};" \
+  "export COMPOSER_ALLOW_SUPERUSER=1;" \
+  "composer install --no-interaction;"
 end
 
 #
@@ -76,4 +81,19 @@ end
 execute 'doctrine_build' do
   command "cd #{node['app']['web_dir']}/#{node['app']['site_name']};" \
   "php bin/console doctrine:migrations:migrate;"
+end
+
+#
+# Also, lets enable mod_rewrite
+#
+execute 'mod_rewrite' do
+  command "a2enmod rewrite; service apache2 restart;"
+end;
+
+#
+# And set up a background process to monitor rabbitmq queue
+#
+package 'tmux'
+execute 'tmux' do
+  command "tmux new -d -s rabbitmq 'php #{node['app']['web_dir']}/#{node['app']['site_name']}/bin/console rabbitmq:consumer -w send_message';"
 end

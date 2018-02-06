@@ -60,13 +60,24 @@ begin
     end
   end
 
-  password = ''
+  creds = sc_data_bag['username']
 
   unless sc_data_bag['password'].to_s.strip.empty?
-    password = ":#{sc_data_bag['password']}"
+    creds << ":#{sc_data_bag['password']}"
   end
 
-  fetch_cmd = "git clone https://#{sc_data_bag['username']}#{password}#{sc_data_bag['location']} #{node['app']['web_dir']}"
+  unless creds.to_s.strip.empty?
+    creds << "@"
+  end
+
+
+  unless Dir.exist?("#{node['app']['web_dir']}/#{node['app']['site_name']}")
+    execute 'git_fetch' do
+      command "cd #{node['app']['web_dir']};" \
+        "git clone https://#{creds}#{sc_data_bag['location']} #{node['app']['web_dir']}/#{node['app']['site_name']}"
+    end
+  end
+
 rescue Net::HTTPServerException, Chef::Exceptions::InvalidDataBagPath
   puts 'No databag for Git. Nothing cloned.'
   puts 'Placing default index file'
